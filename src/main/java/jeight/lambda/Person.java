@@ -51,6 +51,10 @@ public class Person {
         return mobile;
     }
 
+    public void printMe() {
+        System.out.println(toString());
+    }
+
     @Override
     public String toString() {
         return "Person{" +
