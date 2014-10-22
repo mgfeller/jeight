@@ -41,6 +41,8 @@ public class TextSplitter {
       Map<String, Long> words = lines.map(line -> line.split("\\W+")) // Stream<String[]>
               .flatMap(Arrays::stream)      // Stream<String>
               .filter(StringUtils::isNotBlank)
+              .filter(word -> !StringUtils.containsAny(word, "0123456789_"))
+              .filter(word -> word.length() > 1)
               .map(String::toLowerCase)
               .collect(groupingBy(identity(), counting()));
       SortedSet<String> keys = new TreeSet<>();
